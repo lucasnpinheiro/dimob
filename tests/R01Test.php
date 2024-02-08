@@ -11,40 +11,40 @@ class R01Test extends TestCase
     public function testInstanceOf()
     {
         $r01 = R01::create(
-            '123456789',
+            '09719733000155',
             '2020',
-            '1',
-            '123',
-            '1',
-            '2020-01-01',
-            '1',
-            'Teste',
-            '123456789',
-            'Teste',
+            '0',
+            '0',
+            '0',
+            '0',
+            '0',
+            'Empresa',
+            '93529222046',
+            'Rua A',
             'SP',
-            '123',
+            '6969',
+            'Ribeirao Preto',
+            '0359509421',
             '',
-            '',
-            ''
         );
 
         $this->assertInstanceOf(R01::class, $r01);
-        $this->assertEquals('R01', $r01->tipo());
-        $this->assertEquals('00000123456789', $r01->cnpj());
-        $this->assertEquals('2020', $r01->anoCalendario());
-        $this->assertEquals('1', $r01->delcaracaoRetificadora());
-        $this->assertEquals('0000000123', $r01->numeroRecido());
-        $this->assertEquals('1', $r01->situacaoEspecial());
-        $this->assertEquals('2020-01-01', $r01->dataEventoSituacaoEspecial());
-        $this->assertEquals('01', $r01->codigoSituacaoEspecial());
-        $this->assertEquals('Teste                                                       ', $r01->nomeEmpresarial());
-        $this->assertEquals('00123456789', $r01->cpfRfb());
-        $this->assertEquals('Teste                                                                                                                   ', $r01->enderecoComtrtibuinte());
-        $this->assertEquals('SP', $r01->ufContribuinte());
-        $this->assertEquals('0123', $r01->codigoMunicipio());
-        $this->assertEquals('                    ', $r01->reservado1());
-        $this->assertEquals('          ', $r01->reservado2());
-        $this->assertEquals('  ', $r01->delimitadorRegistro());
+        $this->assertEquals('09719733000155', $r01->cnpj());
+        $this->assertEquals('2020', $r01->ano());
+        $this->assertEquals('0', $r01->delcaracao());
+        $this->assertEquals('0000000000', $r01->recido());
+        $this->assertEquals('0', $r01->situacao());
+        $this->assertEquals('00000000', $r01->data());
+        $this->assertEquals('00', $r01->codigo());
+        $this->assertEquals('Empresa                                                     ', $r01->nome());
+        $this->assertEquals('93529222046', $r01->cpf());
+        $this->assertEquals('Rua A                                                                                                                   ', $r01->endereco());
+        $this->assertEquals('SP', $r01->uf());
+        $this->assertEquals('6969', $r01->codigoMunicipio());
+        $this->assertEquals('Ribeirao Preto      ', $r01->reservado1());
+        $this->assertEquals('0359509421', $r01->reservado2());
+        $this->assertEquals('  ', $r01->delimitador());
+        $this->assertEquals(272, strlen((string) $r01));
     }
 
 }
