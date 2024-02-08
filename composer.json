@@ -4,7 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Lucasnpinheiro\\Dimob\\": "src/"
+            "Dimob\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -13,6 +14,11 @@
             "email": "lucasnpinheiro@gmail.com"
         }
     ],
+    "scripts": {
+        "test": "./vendor/bin/phpunit tests"
+    },
     "minimum-stability": "dev",
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^11.1@dev"
+    }
 }
