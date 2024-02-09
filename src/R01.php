@@ -69,7 +69,7 @@ class R01 extends Base
 
     public function cnpj(): ?string
     {
-        return str_pad($this->cnpj, 14, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cnpj), 14, '0', STR_PAD_LEFT);
     }
 
     public function ano(): ?string
@@ -109,7 +109,7 @@ class R01 extends Base
 
     public function cpf(): ?string
     {
-        return str_pad($this->cpf, 11, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cpf), 11, '0', STR_PAD_LEFT);
     }
 
     public function endereco(): ?string

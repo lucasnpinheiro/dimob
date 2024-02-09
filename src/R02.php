@@ -184,7 +184,7 @@ class R02 extends Base
 
     public function cnpj(): ?string
     {
-        return str_pad($this->cnpj, 14, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cnpj), 14, '0', STR_PAD_LEFT);
     }
 
     public function ano(): ?string
@@ -199,7 +199,7 @@ class R02 extends Base
 
     public function cpfCnpjLocador(): ?string
     {
-        return str_pad($this->cpfCnpjLocador, 14, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cpfCnpjLocador), 14, '0', STR_PAD_LEFT);
     }
 
     public function nomeLocador(): ?string
@@ -209,7 +209,7 @@ class R02 extends Base
 
     public function cpfCnpjLocatario(): ?string
     {
-        return str_pad($this->cpfCnpjLocatario, 14, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cpfCnpjLocatario), 14, '0', STR_PAD_LEFT);
     }
 
     public function nomeLocatario(): ?string
@@ -419,7 +419,7 @@ class R02 extends Base
 
     public function cep(): ?string
     {
-        return str_pad($this->cep, 8, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cep), 8, '0', STR_PAD_LEFT);
     }
 
     public function codigoMunicipio(): ?string

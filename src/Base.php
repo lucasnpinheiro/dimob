@@ -29,4 +29,9 @@ abstract class Base
         $str = number_format((float) $str, 2, '', '');
         return str_pad($str, 14, '0', STR_PAD_LEFT);
     }
+
+    protected function removeMask(string $str): string
+    {
+        return preg_replace('/[^0-9]/', '', $str);
+    }
 }

@@ -44,7 +44,7 @@ class Header extends Base
 
     public function cnpj(): string
     {
-        return str_pad($this->cnpj, 14, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cnpj), 14, '0', STR_PAD_LEFT);
     }
 
     public function codigo(): string
