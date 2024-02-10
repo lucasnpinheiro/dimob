@@ -54,12 +54,12 @@ class Header extends Base
 
     public function empresa(): string
     {
-        return str_pad($this->empresa, 60, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->empresa), 60, ' ', STR_PAD_RIGHT);
     }
 
     public function estado(): string
     {
-        return str_pad($this->estado, 2, ' ', STR_PAD_LEFT);
+        return str_pad($this->estado, 2, ' ', STR_PAD_RIGHT);
     }
 
     public function toArray()
@@ -73,7 +73,7 @@ class Header extends Base
             $this->codigo(),
             $this->empresa(),
             $this->estado(),
-            $this->blank(273)
+            $this->blank(273),
         ];
     }
 }

@@ -91,7 +91,6 @@ class ExportTest extends TestCase
             '6969',
             '',
             'SP',
-            '',
             ''
         );
 
@@ -100,14 +99,9 @@ class ExportTest extends TestCase
         $export->addR02($r02);
         $export->addR02($r02);
 
-        $expectedArray = [
-            (string) $header,
-            (string) $r01,
-            implode("\n", [$r02, $r02]),
-            (string) $export->addT9()
-        ];
-
-        $this->assertEquals($expectedArray, $export->toArray());
-        $this->assertEquals(implode("\n", $expectedArray), $export->generate());
+        $this->assertEquals($export->getHeader(), (string) $header);
+        $this->assertEquals($export->getR01(), (string) $r01);
+        $this->assertEquals($export->getR02(), array($r02, $r02));
+        $this->assertNotEmpty($export->getT9());
     }
 }

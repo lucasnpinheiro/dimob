@@ -24,8 +24,7 @@ class R01Test extends TestCase
             'SP',
             '6969',
             'Ribeirao Preto',
-            '0359509421',
-            '',
+            '0359509421'
         );
 
         $this->assertInstanceOf(R01::class, $r01);
@@ -43,8 +42,7 @@ class R01Test extends TestCase
         $this->assertEquals('6969', $r01->codigoMunicipio());
         $this->assertEquals('Ribeirao Preto      ', $r01->reservado1());
         $this->assertEquals('0359509421', $r01->reservado2());
-        $this->assertEquals('  ', $r01->delimitador());
-        $this->assertEquals(272, strlen((string) $r01));
+        $this->assertEquals(270, strlen((string) $r01));
     }
 
 }

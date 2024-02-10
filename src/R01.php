@@ -21,7 +21,6 @@ class R01 extends Base
         private ?string $codigoMunicipio,
         private ?string $reservado1,
         private ?string $reservado2,
-        private ?string $delimitador
     ) {
 
     }
@@ -41,7 +40,6 @@ class R01 extends Base
         ?string $codigoMunicipio,
         ?string $reservado1,
         ?string $reservado2,
-        ?string $delimitador
     ): self {
         return new self(
             $cnpj ?? '0',
@@ -58,7 +56,6 @@ class R01 extends Base
             $codigoMunicipio ?? '0',
             $reservado1 ?? '',
             $reservado2 ?? '',
-            $delimitador ?? ''
         );
     }
 
@@ -104,7 +101,7 @@ class R01 extends Base
 
     public function nome(): ?string
     {
-        return str_pad($this->nome, 60, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->nome), 60, ' ', STR_PAD_RIGHT);
     }
 
     public function cpf(): ?string
@@ -114,7 +111,7 @@ class R01 extends Base
 
     public function endereco(): ?string
     {
-        return str_pad($this->endereco, 120, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->endereco), 120, ' ', STR_PAD_RIGHT);
     }
 
     public function uf(): ?string
@@ -129,17 +126,12 @@ class R01 extends Base
 
     public function reservado1(): ?string
     {
-        return str_pad($this->reservado1, 20, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->reservado1), 20, ' ', STR_PAD_RIGHT);
     }
 
     public function reservado2(): ?string
     {
-        return str_pad($this->reservado2, 10, ' ', STR_PAD_RIGHT);
-    }
-
-    public function delimitador(): ?string
-    {
-        return str_pad($this->delimitador, 2, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->reservado2), 10, ' ', STR_PAD_RIGHT);
     }
 
     public function toArray(): array
@@ -160,7 +152,6 @@ class R01 extends Base
             $this->codigoMunicipio(),
             $this->reservado1(),
             $this->reservado2(),
-            $this->delimitador()
         ];
     }
 }

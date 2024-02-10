@@ -59,7 +59,6 @@ class R02 extends Base
         private ?string $reservado1,
         private ?string $uf,
         private ?string $reservado2,
-        private ?string $delimitador,
     ) {
 
     }
@@ -117,7 +116,6 @@ class R02 extends Base
         ?string $reservado1,
         ?string $uf,
         ?string $reservado2,
-        ?string $delimitador
     ): self {
         return new self(
             $cnpj ?? '0',
@@ -172,7 +170,6 @@ class R02 extends Base
             $reservado1 ?? '',
             $uf ?? '',
             $reservado2 ?? '',
-            $delimitador ?? ''
         );
 
     }
@@ -194,27 +191,27 @@ class R02 extends Base
 
     public function sequencia(): ?string
     {
-        return str_pad($this->sequencia, 5, '0', STR_PAD_LEFT);
+        return str_pad($this->sequencia, 7, '0', STR_PAD_LEFT);
     }
 
     public function cpfCnpjLocador(): ?string
     {
-        return str_pad($this->removeMask($this->cpfCnpjLocador), 14, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cpfCnpjLocador), 14, ' ', STR_PAD_RIGHT);
     }
 
     public function nomeLocador(): ?string
     {
-        return str_pad($this->nomeLocador, 60, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->nomeLocador), 60, ' ', STR_PAD_RIGHT);
     }
 
     public function cpfCnpjLocatario(): ?string
     {
-        return str_pad($this->removeMask($this->cpfCnpjLocatario), 14, '0', STR_PAD_LEFT);
+        return str_pad($this->removeMask($this->cpfCnpjLocatario), 14, ' ', STR_PAD_RIGHT);
     }
 
     public function nomeLocatario(): ?string
     {
-        return str_pad($this->nomeLocatario, 60, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->nomeLocatario), 60, ' ', STR_PAD_RIGHT);
     }
 
     public function numeroContrato(): ?string
@@ -409,12 +406,13 @@ class R02 extends Base
 
     public function tipoImovel(): ?string
     {
-        return str_pad($this->tipoImovel, 1, '0', STR_PAD_LEFT);
+        $this->tipoImovel = $this->tipoImovel === 'R' ? 'R' : 'U';
+        return str_pad($this->tipoImovel, 1, '0', STR_PAD_RIGHT);
     }
 
     public function enderecoImovel(): ?string
     {
-        return str_pad($this->enderecoImovel, 60, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->enderecoImovel), 60, ' ', STR_PAD_RIGHT);
     }
 
     public function cep(): ?string
@@ -429,7 +427,7 @@ class R02 extends Base
 
     public function reservado1(): ?string
     {
-        return str_pad($this->reservado1, 20, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->reservado1), 20, ' ', STR_PAD_RIGHT);
     }
 
     public function uf(): ?string
@@ -439,12 +437,7 @@ class R02 extends Base
 
     public function reservado2(): ?string
     {
-        return str_pad($this->reservado2, 10, ' ', STR_PAD_RIGHT);
-    }
-
-    public function delimitador(): ?string
-    {
-        return str_pad($this->delimitador, 2, ' ', STR_PAD_RIGHT);
+        return str_pad($this->string($this->reservado2), 10, ' ', STR_PAD_RIGHT);
     }
 
     public function toArray(): array
@@ -503,7 +496,6 @@ class R02 extends Base
             $this->reservado1(),
             $this->uf(),
             $this->reservado2(),
-            $this->delimitador(),
         ];
     }
 }

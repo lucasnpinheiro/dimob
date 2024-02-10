@@ -44,7 +44,7 @@ class T9 extends Base
             $this->tipo(),
             $this->cnpj(),
             $this->totalLinhas(),
-            $this->blank(80)
+            $this->blank(80),
         ];
     }
 }

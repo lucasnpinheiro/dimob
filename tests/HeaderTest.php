@@ -32,7 +32,7 @@ class HeaderTest extends TestCase
             'SP'
         );
 
-        $str = 'DIMOB       2022     000759302950692020Nome da empresa                                             SP                                                                                                                                                                                                                                                                                 ';
+        $str = 'DIMOB       2022     000759302950692020NOME DA EMPRESA                                             SP                                                                                                                                                                                                                                                                                 ';
         $this->assertEquals('2022', $header->ano());
         $this->assertEquals('00075930295069', $header->cnpj());
         $this->assertEquals('2020', $header->codigo());

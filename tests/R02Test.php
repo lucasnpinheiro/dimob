@@ -62,7 +62,6 @@ class R02Test extends TestCase
             '6969',
             '',
             'SP',
-            '',
             ''
         );
 
@@ -70,10 +69,10 @@ class R02Test extends TestCase
         $this->assertEquals('R02', $r02->tipo());
         $this->assertEquals('09719733000155', $r02->cnpj());
         $this->assertEquals('2020', $r02->ano());
-        $this->assertEquals('00000', $r02->sequencia());
-        $this->assertEquals('00093529222046', $r02->cpfCnpjLocador());
+        $this->assertEquals('0000000', $r02->sequencia());
+        $this->assertEquals('93529222046   ', $r02->cpfCnpjLocador());
         $this->assertEquals('Nome Locador                                                ', $r02->nomeLocador());
-        $this->assertEquals('00093529222046', $r02->cpfCnpjLocatario());
+        $this->assertEquals('93529222046   ', $r02->cpfCnpjLocatario());
         $this->assertEquals('Nome Locatario                                              ', $r02->nomeLocatario());
         $this->assertEquals('123456', $r02->numeroContrato());
         $this->assertEquals('20200101', $r02->dataContrato());
@@ -120,7 +119,6 @@ class R02Test extends TestCase
         $this->assertEquals('                    ', $r02->reservado1());
         $this->assertEquals('SP', $r02->uf());
         $this->assertEquals('          ', $r02->reservado2());
-        $this->assertEquals('  ', $r02->delimitador());
         $this->assertEquals(799, strlen((string) $r02));
 
     }
